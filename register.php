@@ -1,0 +1,12 @@
+<?php
+session_start();
+if(isset($_SESSION['user'])){header("Location:index.php");exit;}
+$error=$_GET['error']??'';
+?>
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daftar — LelangKita</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial;background:linear-gradient(135deg,#151823,#302653);min-height:100vh;display:grid;place-items:center;color:#202631}.wrap{width:min(500px,94%)}.logo{text-align:center;color:#fff;font-size:27px;font-weight:900;margin:22px}.logo span{color:#a995ff}.card{background:#fff;border-radius:26px;padding:30px;box-shadow:0 25px 70px #0005}.back{color:#6d4aff;font-weight:800}.h{margin:20px 0 4px}.muted{color:#7a8390}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.group{margin:13px 0}.group.full{grid-column:1/-1}.group label{display:block;font-weight:800;margin-bottom:7px}.input{width:100%;padding:13px;border:1px solid #d9dee7;border-radius:11px;font-size:15px}.btn{width:100%;border:0;border-radius:12px;padding:14px;background:#6d4aff;color:#fff;font-weight:900;cursor:pointer;margin-top:8px}.error{background:#fff0f0;color:#c53232;padding:12px;border-radius:10px;margin:15px 0}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+</style></head><body><div class="wrap"><div class="logo">🔨 Lelang<span>Kita</span></div><div class="card"><a class="back" href="index.php">← Beranda</a><h1 class="h">Buat akun</h1><p class="muted">Daftar sebagai peserta lelang.</p>
+<?php if($error): ?><div class="error"><?=htmlspecialchars($error)?></div><?php endif; ?>
+<form action="proses_register.php" method="POST"><div class="grid"><div class="group"><label>Nama</label><input class="input" name="name" required></div><div class="group"><label>Username</label><input class="input" name="username" required></div><div class="group full"><label>Email</label><input class="input" type="email" name="email" required></div><div class="group"><label>Password</label><input class="input" type="password" name="password" minlength="6" required></div><div class="group"><label>Konfirmasi</label><input class="input" type="password" name="password_confirmation" minlength="6" required></div></div><button class="btn">Daftar Sekarang →</button></form>
+<p style="text-align:center">Sudah punya akun? <a href="login.php" style="color:#6546e9;font-weight:800">Masuk</a></p></div></div></body></html>
